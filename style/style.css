@@ -9,8 +9,6 @@ body {
 }
 
 header nav {
-    position: fixed;
-    z-index: 10;
     background-color: #3E6B43;
     align-items: center;
     width: 100vw;
@@ -22,6 +20,8 @@ header nav {
 }
 
 .mobile-nav {
+    position: fixed;
+    z-index: 10;
     display: flex;
     justify-content: space-evenly;
     bottom: 0;

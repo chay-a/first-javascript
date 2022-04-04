@@ -1,0 +1,41 @@
+.card {
+    background-color: #13771d;
+    width: 80%;
+    margin: auto;
+    color: white;
+    padding: 1rem;
+    border-radius: 25px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+.card-header .card-profile{
+    width: 20%;
+}
+
+.card-delete {
+    width: 30%;
+    background: none;
+    border: none;
+}
+.card-datas {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-datas p {
+    padding: 0 1rem;
+}
+
+
+@media  screen and (min-width : 700px) {
+    .card-delete   {
+        width: 5%;
+    }
+    .card-header .card-profile{
+        width: 10%;
+    }
+}
