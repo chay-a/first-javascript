@@ -7,11 +7,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
     refresh.addEventListener('click', function () {
         getBooks();
     })
+    document.getElementById('search').addEventListener('click', function () {
+        const research = document.getElementById('searchInput').value;
+        const encodedResearch = encodeURIComponent(research);
+        getBooks(encodedResearch);
+    })
 });
 
 
-function getBooks() {
-    fetch('https://openlibrary.org/search.json?q=harry+potter&page=1&limit=5')
+function getBooks(request = 'harry+potter') {
+    fetch('https://openlibrary.org/search.json?q='+request+'&page=1&limit=5')
         .then((response) => {
             if (response.status >= 200 && response.status <= 299) {
                 return response.json();
@@ -24,6 +29,7 @@ function getBooks() {
 }
 
 function feedCreation(response) {
+    document.querySelector('.feed').innerHTML = '';
     for (let i = 0; i < response.docs.length; i++) {
         const card = document.createElement("div");
         card.classList.add('card');
@@ -51,9 +57,15 @@ function feedCreation(response) {
 
 function getBook(key, parent) {
     fetch("https://openlibrary.org" + key + '.json')
-        .then(response => response.json())
+        .then((response) => {
+            if (response.status >= 200 && response.status <= 299) {
+                return response.json();
+            } else {
+                throw Error(response.statusText);
+            }
+        })
         .then(response => createDescription(response, parent))
-        .catch(error => alert("Erreur : " + error));
+        .catch(error => console.error('Erreur : ' + error));
 }
 
 function createDescription(response, parent) {
