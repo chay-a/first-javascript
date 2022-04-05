@@ -3,19 +3,29 @@ $(document).ready(function() {
     $('refresh').click(function() {
         getBooks();
     });
+
+    $('#search').click(function () {
+        const research = $('#searchInput').val();
+        const encodedResearch = encodeURIComponent(research);
+        getBooks(encodedResearch);
+    })
 });
 
-let getBooks = function () {
+let getBooks = function (request = 'harry+potter') {
     $.ajax(
         {
-            url: 'https://openlibrary.org/search.json?q=harry+potter&page=1&limit=5',
+            url: 'https://openlibrary.org/search.json?q='+request+'&page=1&limit=5',
             method: "GET",
             dataType: "json",
         })
     .done(function (response) {
+        $('.feed').empty();
         feedCreation(response);
         console.log('traitement');
     })
+    .fail(function (error) {
+        console.error('Erreur : ' + error);
+    });
 };
 
 let getBook = function(key, parent) {
@@ -28,7 +38,10 @@ let getBook = function(key, parent) {
         function (response) {
             createDescription(response, parent);
         }
-    );
+    )
+    .fail(function (error) {
+        console.error('Erreur : ' + error);
+    });
 }
 console.log("fin traitement")
 let feedCreation = function (response) {
@@ -55,3 +68,4 @@ let createDescription = function (response, parent) {
     parent.append(cardBody);
     cardBody.append($('<p>').text(response.description));
 }
+
