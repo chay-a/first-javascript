@@ -1,8 +1,5 @@
 $(document).ready(function() {
-    $(".owl-carousel").owlCarousel({
-        animateOut: 'fadeOut'
-    });
-    $('refresh').click(function() {
+    $('#refresh').click(function() {
         getBooks();
     });
 
