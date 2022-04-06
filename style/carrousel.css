@@ -1,6 +1,10 @@
-.carrousel {
-  max-width: 1000px;
-  margin: auto;
+.slidershow {
+    max-width: 20%;
+    margin: auto;
+    position: relative;
+}
+
+.slider {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,9 +30,24 @@
 }
 
 .image {
-    width: 50%;
+    width: 100%;
 }
 
 .image img {
     width: 100%;
+}
+
+.arrows {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    z-index: 20
+}
+
+.arrows button {
+    background: none;
+    border: none;
+    width: 7%;
 }
