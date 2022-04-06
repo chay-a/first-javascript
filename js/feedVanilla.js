@@ -24,7 +24,13 @@ function getBooks(request = 'harry+potter') {
             }
         })
         .then(response => feedCreation(response))
-        .catch(error => console.error('Erreur : ' + error));
+        .catch((error) => {
+            console.error('Erreur : ' + error);
+            const feed = document.querySelector('.feed');
+            const errorMsg = document.createElement('p');
+            errorMsg.textContent = 'Une erreur est survenue';
+            feed.before(errorMsg);
+        });
 }
 
 function feedCreation(response) {
