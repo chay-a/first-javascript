@@ -1,5 +1,7 @@
 $(document).ready(function() {
-    getBooks();
+    $(".owl-carousel").owlCarousel({
+        animateOut: 'fadeOut'
+    });
     $('refresh').click(function() {
         getBooks();
     });
@@ -19,9 +21,9 @@ let getBooks = function (request = 'harry+potter') {
             dataType: "json",
         })
     .done(function (response) {
+        console.log('traitement');
         $('.feed').empty();
         feedCreation(response);
-        console.log('traitement');
     })
     .fail(function (error) {
         console.error('Erreur : ' + error);
