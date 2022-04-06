@@ -1,6 +1,5 @@
 $(document).ready(function() {
-    getBooks();
-    $('refresh').click(function() {
+    $('#refresh').click(function() {
         getBooks();
     });
 
@@ -19,9 +18,9 @@ let getBooks = function (request = 'harry+potter') {
             dataType: "json",
         })
     .done(function (response) {
+        console.log('traitement');
         $('.feed').empty();
         feedCreation(response);
-        console.log('traitement');
     })
     .fail(function (error) {
         console.error('Erreur : ' + error);
