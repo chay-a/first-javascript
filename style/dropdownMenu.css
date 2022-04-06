@@ -1,0 +1,15 @@
+.dropdown-menu {
+    position: relative;
+}
+
+.dropdown {
+    background-color: aliceblue;
+    padding: 0.5rem;
+    position: absolute;
+    width: 10rem;
+    display: none;
+}
+
+.dropdown-item {
+    color: green !important;
+}
