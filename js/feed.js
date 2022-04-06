@@ -24,6 +24,7 @@ let getBooks = function (request = 'harry+potter') {
     })
     .fail(function (error) {
         console.error('Erreur : ' + error);
+        $('.feed').prepend('<p>Une erreur est survenue</p>');
     });
 };
 
@@ -40,6 +41,7 @@ let getBook = function(key, parent) {
     )
     .fail(function (error) {
         console.error('Erreur : ' + error);
+        $('.feed').prepend('<p>Une erreur est survenue</p>');
     });
 }
 console.log("fin traitement")
