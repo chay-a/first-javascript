@@ -27,7 +27,7 @@ header nav {
     bottom: 0;
 }
 
-.mobile-nav a {
+.mobile-nav a, .dropdown-menu-mobile {
     width: 10%;
 }
 
