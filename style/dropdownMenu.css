@@ -2,7 +2,7 @@
     position: relative;
 }
 
-.dropdown {
+.dropdown, .dropdown-mobile {
     background-color: aliceblue;
     padding: 0.5rem;
     position: absolute;
@@ -16,3 +16,4 @@
 .dropdown-item {
     color: green !important;
 }
+
