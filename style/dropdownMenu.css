@@ -1,0 +1,25 @@
+.dropdown-menu {
+    position: relative;
+}
+
+.dropdown, .dropdown-mobile {
+    background-color: aliceblue;
+    padding: 0.5rem;
+    position: absolute;
+    width: 10rem;
+}
+
+.dropdown-mobile {
+    bottom: 100%;
+}
+
+.close {
+    display: none;
+}
+
+.dropdown-item {
+    color: green !important;
+    text-decoration: none;
+    display: block;
+    width: 100% !important;
+}
