@@ -1,13 +1,16 @@
 .slidershow {
-    max-width: 20%;
-    margin: auto;
-    position: relative;
+  max-width: 20%;
+  margin: auto;
+  position: relative;
 }
 
 .slider {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.animation {
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: infinite;
@@ -16,38 +19,38 @@
 
 @keyframes fade {
   0% {
-      opacity: 0.4;
+    opacity: 0.4;
   }
   50% {
-      opacity: 1;
+    opacity: 1;
   }
   80% {
-      opacity: 1;
+    opacity: 1;
   }
   100% {
-      opacity: 0.4;
+    opacity: 0.4;
   }
 }
 
 .image {
-    width: 100%;
+  width: 100%;
 }
 
 .image img {
-    width: 100%;
+  width: 100%;
 }
 
 .arrows {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    z-index: 20
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  z-index: 20;
 }
 
 .arrows button {
-    background: none;
-    border: none;
-    width: 7%;
+  background: none;
+  border: none;
+  width: 7%;
 }
