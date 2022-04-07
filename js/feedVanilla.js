@@ -20,12 +20,11 @@ function getBooks(request = 'harry+potter') {
             if (response.status >= 200 && response.status <= 299) {
                 return response.json();
             } else {
-                throw Error(response.statusText);
+                throw Error(response.status);
             }
         })
         .then(response => feedCreation(response))
         .catch((error) => {
-            console.error('Erreur : ' + error);
             const feed = document.querySelector('.feed');
             const errorMsg = document.createElement('p');
             errorMsg.textContent = 'Une erreur est survenue';
@@ -70,7 +69,12 @@ function getBook(key, parent) {
             }
         })
         .then(response => createDescription(response, parent))
-        .catch(error => console.error('Erreur : ' + error));
+        .catch(error => {
+            const feed = document.querySelector('.feed');
+            const errorMsg = document.createElement('p');
+            errorMsg.textContent = 'Une erreur est survenue';
+            feed.before(errorMsg);
+        });
 }
 
 function createDescription(response, parent) {
