@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="style/feed.css" />
     <link rel="stylesheet" href="style/dropdownMenu.css" />
     <link rel="stylesheet" href="style/carrousel.css">
+    <link rel="stylesheet" href="style/form.css">
     <script src="js/feedVanilla.js"></script>
     <script src="js/dropdownMenu.js"></script>
     <script src="js/carrousel.js"></script>
+    <script src="js/form.js"></script>
     <title>Feed</title>
   </head>
   <body>
@@ -61,8 +63,29 @@
             </div>
         </div>
         <button id="refresh">Refresh</button>
-        <input type="text" placeholder="chercher un livre" id="searchInput">
-        <button id="search">chercher</button>
+        <div>
+          <input type="text" placeholder="chercher un livre" id="searchInput">
+          <button id="search">chercher</button>
+        </div>
+        <form action="#" method="post" id="newBook" enctype=multipart/form-data>
+          <div>
+            <label for="title">Titre du livre</label>
+            <input type="text" name="title" id="title">
+          </div>
+          <div>
+            <label for="date">Date de publication</label>
+            <input type="date" name="date" id="date">
+          </div>
+          <div>
+            <label for="description">Description du livre</label>
+            <textarea name="description" id="description" cols="30" rows="10"></textarea>
+          </div>
+          <div>
+            <label for="cover">Couverture du livre</label>
+            <input type="file" name="cover" id="cover" accept="image/png, image/jpeg">
+          </div>
+          <input type="submit" value="envoyer" name="submit" id="submit">
+        </form>
         <section class="feed">
         </section>
     </main>

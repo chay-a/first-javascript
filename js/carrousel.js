@@ -39,7 +39,6 @@ function slider() {
     for (const slide of slides) {
         slide.style.display = 'none';
     }
-    console.log(slideShow);
     slides[slideShow].style.display = 'block';
     if (isSliderRunning) {
         slideShow++;
