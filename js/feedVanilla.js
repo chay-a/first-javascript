@@ -28,7 +28,7 @@ function getBooks(request = 'harry+potter') {
             const feed = document.querySelector('.feed');
             const errorMsg = document.createElement('p');
             errorMsg.textContent = 'Une erreur est survenue';
-            feed.before(errorMsg);
+            feed.prepend(errorMsg);
         });
 }
 
@@ -62,10 +62,11 @@ function feedCreation(response) {
 function getBook(key, parent) {
     fetch("https://openlibrary.org" + key + '.json')
         .then((response) => {
-            if (response.status >= 200 && response.status <= 299) {
+            if ((response.status >= 200 && response.status <= 299)) {
                 return response.json();
             } else {
-                throw Error(response.statusText);
+                console.log('else '+response.status);
+                throw Error(response.status);
             }
         })
         .then(response => createDescription(response, parent))
@@ -73,7 +74,7 @@ function getBook(key, parent) {
             const feed = document.querySelector('.feed');
             const errorMsg = document.createElement('p');
             errorMsg.textContent = 'Une erreur est survenue';
-            feed.before(errorMsg);
+            feed.prepend(errorMsg);
         });
 }
 
@@ -82,6 +83,16 @@ function createDescription(response, parent) {
     cardBody.classList.add('card-body');
     parent.append(cardBody);
     const description = document.createElement('p');
-    description.textContent = response.description;
+    checkDescription(response.description, description);
     cardBody.append(description);
+}
+
+function checkDescription(description, descriptionElement) {
+        if (typeof description == 'string') {
+            descriptionElement.textContent = description;
+    } else if (typeof description == 'object'){
+        descriptionElement.textContent = description.value;
+    } else if (!description) {
+        descriptionElement.textContent = "Il n'y a pas de description pour ce livre"
+    }
 }
