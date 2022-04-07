@@ -1,5 +1,5 @@
 .slidershow {
-  max-width: 20%;
+  max-width: 80%;
   margin: auto;
   position: relative;
 }
@@ -53,4 +53,10 @@
   background: none;
   border: none;
   width: 7%;
+}
+
+@media  screen and (min-width : 700px) {
+  .slidershow {
+    max-width: 30%;
+  }
 }
