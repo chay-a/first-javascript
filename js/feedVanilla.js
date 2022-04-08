@@ -25,6 +25,7 @@ function getBooks(request = 'harry+potter') {
         })
         .then(response => feedCreation(response))
         .catch((error) => {
+            console.log(error);
             const feed = document.querySelector('.feed');
             const errorMsg = document.createElement('p');
             errorMsg.textContent = 'Une erreur est survenue';
@@ -35,26 +36,7 @@ function getBooks(request = 'harry+potter') {
 function feedCreation(response) {
     document.querySelector('.feed').innerHTML = '';
     for (let i = 0; i < response.docs.length; i++) {
-        const card = document.createElement("div");
-        card.classList.add('card');
-        const feed = document.querySelector('.feed');
-        feed.append(card);
-        const cardHeader = document.createElement('div');
-        cardHeader.classList.add('card-header');
-        card.append(cardHeader);
-        const cardDatas = document.createElement('div');
-        cardDatas.classList.add('card-datas');
-        cardHeader.append(cardDatas);
-        const cardDate = document.createElement('p');
-        cardDate.classList.add('card-date');
-        cardDate.textContent = response.docs[i].first_publish_year;
-        const cardName = document.createElement('p');
-        cardName.classList.add('card-name');
-        cardName.textContent = response.docs[i].title;
-        const cardImg = document.createElement('img');
-        cardImg.setAttribute('src', 'https://covers.openlibrary.org/b/id/' + response.docs[i].cover_i + '-S.jpg');
-        cardImg.classList.add('card-profile');
-        cardDatas.append(cardDate, cardName, cardImg);
+        const card = displayBook(response.docs[i], 'https://covers.openlibrary.org/b/id/' + response.docs[i].cover_i + '-S.jpg');
         getBook(response.docs[i].key, card);
     }
 }
@@ -95,4 +77,28 @@ function checkDescription(description, descriptionElement) {
     } else if (!description) {
         descriptionElement.textContent = "Il n'y a pas de description pour ce livre"
     }
+}
+
+function displayBook(book, cover = book.cover) {
+    const card = document.createElement("div");
+    card.classList.add('card');
+    const feed = document.querySelector('.feed');
+    feed.append(card);
+    const cardHeader = document.createElement('div');
+    cardHeader.classList.add('card-header');
+    card.append(cardHeader);
+    const cardDatas = document.createElement('div');
+    cardDatas.classList.add('card-datas');
+    cardHeader.append(cardDatas);
+    const cardDate = document.createElement('p');
+    cardDate.classList.add('card-date');
+    cardDate.textContent = book.first_publish_year;
+    const cardName = document.createElement('p');
+    cardName.classList.add('card-name');
+    cardName.textContent = book.title;
+    const cardImg = document.createElement('img');
+    cardImg.setAttribute('src', cover);
+    cardImg.classList.add('card-profile');
+    cardDatas.append(cardDate, cardName, cardImg);
+    return card;
 }

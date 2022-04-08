@@ -1,11 +1,26 @@
+let errors = {};
 document.addEventListener("DOMContentLoaded", function () {
     const submit = document.getElementById('submit');
     submit.addEventListener('click', function (e) {
         e.preventDefault();
 
-        let errors = validateForm();
+        errors = validateForm();
         if (Object.entries(errors).length !== 0) {
             displayErrors(errors);
+        } else {
+            deleteOldErrors();
+            
+            const newBook = {
+                title: document.forms['newBook']['title'].value,
+                first_publish_year: document.forms['newBook']['date'].value,
+                description: document.forms['newBook']['description'].value,
+                cover: document.forms['newBook']['cover'].value,
+            }
+            const card = displayBook(newBook);
+            createDescription(newBook, card);
+            displayDeleteButton(card);
+            document.getElementById('newBook').reset();
+            
         }
     })
 });
@@ -35,9 +50,9 @@ function textValidate(input, min, max) {
         return 'min';
     } else if (input.length > max) {
         return 'max';
-    } else if (input.match(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi)) {
+    } else if (input.match(/^[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]+$/gi)) {
         return 'special';
-    } else if (input.match(/[0-9]/gi)) {
+    } else if (input.match(/^[0-9]+$/gi)) {
         return 'number';
     }
 }
@@ -71,7 +86,7 @@ function checkErrors(errors) {
     return errors;
 }
 
-function printErrors(errors) {
+function displayErrors(errors) {
     deleteOldErrors();
     const errorMsg = {
         title: {
@@ -106,6 +121,7 @@ function printErrors(errors) {
         p.classList.add('error');
         input.after(p);
     }
+    emptyErrorsObject();
 }
 
 function deleteOldErrors() {
@@ -114,4 +130,15 @@ function deleteOldErrors() {
     errors.forEach(error => {
         error.remove();
     });
+}
+
+function emptyErrorsObject() {
+    for (const key in errors) {
+            delete errors[key];
+    }
+}
+
+function displayDeleteButton(card) {
+    const cardDatas = card.firstChild;
+    cardDatas.innerHTML = '<button class="card-delete"><img src="img/delete.svg" alt="delete post" class="card-close icons"></button>'+cardDatas.innerHTML;
 }
