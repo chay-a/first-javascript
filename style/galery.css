@@ -1,0 +1,28 @@
+.instagram {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 7rem;
+}
+
+.instagram img {
+    max-width: 700px;
+    width: 80%;
+    margin: 1rem auto;
+}
+
+.view{
+    display: none;
+}
+
+@media  screen and (min-width : 700px) {
+    .instagram {
+        flex-direction: row;
+    }
+    .instagram img {
+        max-width: 400px;
+    }
+    .view {
+        display: inline;
+    }
+}
