@@ -10,20 +10,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
         toggleView('row')
     });
     let i = 0;
+
     const send = document.getElementById('imgSend');
     const add = document.getElementById('add');
     add.addEventListener('click', function (e) {
         e.preventDefault();
-        if (i < 5) {
-            const form = document.getElementById('formImg');
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.classList.add('img-input');
-            form.append(input);
-            i++;
-        } else {
-            console.log('non');
-        }
+        displayInput(i);
         send.style.display = 'block';
     });
     send.addEventListener('click', function (e) {
@@ -31,10 +23,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
         const imgUrl = document.querySelectorAll('.img-input');
         for (const img  of imgUrl) {
             if (imgUrlValidate(img.value)) {
-                displayImg(img);
+               let image = displayImg(img);
+               image.classList.add('added');
             }
         }
+        document.getElementById('formImg').reset();
     });
+    document.addEventListener('dblclick', function (e) {
+        deleteItem(e, 'IMG', 'added');
+    })
 })
 
 function toggleView(direction) {
@@ -47,4 +44,18 @@ function displayImg(img) {
     const image = document.createElement('img');
     image.setAttribute('src', img.value);
     instagram.prepend(image);
+    return image;
+}
+
+function displayInput(i) {
+    if (i < 5) {
+        const form = document.getElementById('formImg');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.classList.add('img-input');
+        form.append(input);
+        i++;
+    } else {
+        console.log('non');
+    }
 }
