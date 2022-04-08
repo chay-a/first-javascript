@@ -4,23 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="style/style.css" />
     <link rel="stylesheet" href="style/feed.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/feed.js"></script>
+    <link rel="stylesheet" href="style/dropdownMenu.css" />
+    <link rel="stylesheet" href="style/carrousel.css">
+    <link rel="stylesheet" href="style/form.css">
+    <script src="js/feedVanilla.js"></script>
+    <script src="js/dropdownMenu.js"></script>
+    <script src="js/carrousel.js"></script>
+    <script src="js/form.js"></script>
     <title>Feed</title>
   </head>
   <body>
     <header>
       <nav class="mobile-nav">
-        <a href="games.html"><img src="img/games.svg" class="icons" /></a>
+        <div class="dropdown-menu-mobile">
+          <a href="games.html" id="gamesMobile"><img src="img/games.svg" class="icons" /></a>
+          <div class="dropdown-mobile close">
+            <a href="#" class="dropdown-item">Pierre, feuille ,ciseaux</a>
+            <a href="#" class="dropdown-item">Memory game</a>
+          </div>
+        </div>
         <a href="gallery.html"><img src="img/gallery.svg" class="icons" /></a>
         <a href="index.html"
           ><img src="img/profile.jpeg" class="profile-img nav-img"
         /></a>
       </nav>
       <nav class="desktop-nav">
-        <a href="games.html">Jeux</a>
+        <div class="dropdown-menu">
+          <a href="games.html" id="games">Jeux</a>
+          <div class="dropdown close">
+            <a href="#" class="dropdown-item">Pierre, feuille ,ciseaux</a>
+            <a href="#" class="dropdown-item">Memory game</a>
+          </div>
+        </div>
         <a href="gallery.html">Gallerie</a>
         <a href="index.html"
           ><img src="img/profile.jpeg" class="profile-img nav-img"
@@ -28,13 +46,52 @@
       </nav>
     </header>
     <main>
-      <button id="refresh">Refresh</button>
-      <input type="text" placeholder="chercher un livre" id="searchInput" />
-      <button id="search">chercher</button>
-      <section class="feed"></section>
+        <div class="slidershow">
+            <div class="arrows">
+                <button class="previous"><img src="img/angle-left-solid.svg" alt=""></button>
+                <button class="next"><img src="img/angle-right-solid.svg" alt=""></button>
+            </div>
+            <div class="slider animation">
+                <div class="image"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.KrkDcS5MwLhPjOdZcWHJhgAAAA%26pid%3DApi&f=1" alt=""></div>
+                <div class="image"><img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fblessmyweeds.com%2Fwp-content%2Fuploads%2F2015%2F04%2FLandscaping4.jpg&f=1&nofb=1" alt=""></div>
+                <div class="image"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.lIVsfAhM4vtHJG_27NG8ogAAAA%26pid%3DApi&f=1" alt=""></div>
+                <div class="image"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.diamondcertified.org%2Fwp-content%2Fuploads%2Fcache%2F2019%2F01%2FManzanita-Landscape-Construction-Inc.-Rustic-Mediterranean-style-landscape-with-boulder-fire-pit-483x483-cropped.jpg&f=1&nofb=1" alt=""></div>
+                <div class="image"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.home-dzine.co.za%2F2020%2Fmay%2F369.jpg&f=1&nofb=1" alt=""></div>
+                <div class="image"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.s2dkBv_w5H5Y8vGQZABRaAAAAA%26pid%3DApi&f=1" alt=""></div>
+                <div class="image"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.BYs0oHcaLHQ-dL8Ha3v1bQAAAA%26pid%3DApi&f=1" alt=""></div>
+                <div class="image"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fst.hzcdn.com%2Ffimgs%2F52b1bc43011406cf_6194-w312-h312-b0-p0--eclectic-landscape.jpg&f=1&nofb=1" alt=""></div>
+            </div>
+        </div>
+        <button id="refresh">Refresh</button>
+        <div>
+          <input type="text" placeholder="chercher un livre" id="searchInput">
+          <button id="search">chercher</button>
+        </div>
+        <form action="#" method="post" id="newBook" enctype=multipart/form-data>
+          <div>
+            <label for="title">Titre du livre</label>
+            <input type="text" name="title" id="title">
+          </div>
+          <div>
+            <label for="date">Date de publication</label>
+            <input type="date" name="date" id="date">
+          </div>
+          <div>
+            <label for="description">Description du livre</label>
+            <textarea name="description" id="description" cols="30" rows="10"></textarea>
+          </div>
+          <div>
+            <label for="cover">Couverture du livre</label>
+            <input type="file" name="cover" id="cover" accept="image/png, image/jpeg">
+          </div>
+          <input type="submit" value="envoyer" name="submit" id="submit">
+        </form>
+        <section class="feed">
+        </section>
     </main>
     <footer>
       <p>NomSite</p>
     </footer>
   </body>
 </html>
+

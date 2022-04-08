@@ -30,6 +30,10 @@
     padding: 0 1rem;
 }
 
+.feed {
+    margin-bottom: 8rem;
+}
+
 
 @media  screen and (min-width : 700px) {
     .card-delete   {
