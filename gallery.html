@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style/dropdownMenu.css">
     <link rel="stylesheet" href="style/galery.css">
     <script src="js/dropdownMenu.js"></script>
+    <script src="js/forms.js"></script>
     <script src="js/galery.js"></script>
     <title>Gallerie</title>
   </head>
@@ -42,7 +43,10 @@
     </header>
     <main>
         <div class="buttons">
-            <button class="add">Ajouter</button>
+          <form action="#" method="post" id="formImg">
+            <button id="add">Ajouter</button>
+            <input type="submit" value="envoyer" id="imgSend">
+          </form>
             <div class="view">
               <button id="columns">Mosaïque</button>
               <button id="column">Colonne</button>

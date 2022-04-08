@@ -15,6 +15,10 @@
     display: none;
 }
 
+#imgSend {
+    display: none;
+}
+
 @media  screen and (min-width : 700px) {
     .instagram {
         flex-direction: row;
