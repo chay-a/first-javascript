@@ -5,20 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style/style.css" />
-    <link rel="stylesheet" href="style/feed.css" />
-    <title>Feed</title>
+    <link rel="stylesheet" href="style/dropdownMenu.css">
+    <link rel="stylesheet" href="style/galery.css">
+    <script src="js/dropdownMenu.js"></script>
+    <script src="js/galery.js"></script>
+    <title>Gallerie</title>
   </head>
   <body>
     <header>
       <nav class="mobile-nav">
-        <a href="games.html"><img src="img/games.svg" class="icons" /></a>
+        <div class="dropdown-menu-mobile">
+          <a href="games.html" id="gamesMobile"><img src="img/games.svg" class="icons" /></a>
+          <div class="dropdown-mobile close">
+            <a href="#" class="dropdown-item">Pierre, feuille ,ciseaux</a>
+            <a href="#" class="dropdown-item">Memory game</a>
+          </div>
+        </div>
         <a href="gallery.html"><img src="img/gallery.svg" class="icons" /></a>
         <a href="index.html"
           ><img src="img/profile.jpeg" class="profile-img nav-img"
         /></a>
       </nav>
       <nav class="desktop-nav">
-        <a href="games.html">Jeux</a>
+        <div class="dropdown-menu">
+          <a href="games.html" id="games">Jeux</a>
+          <div class="dropdown close">
+            <a href="#" class="dropdown-item">Pierre, feuille ,ciseaux</a>
+            <a href="#" class="dropdown-item">Memory game</a>
+          </div>
+        </div>
         <a href="gallery.html">Gallerie</a>
         <a href="index.html"
           ><img src="img/profile.jpeg" class="profile-img nav-img"
@@ -27,13 +42,26 @@
     </header>
     <main>
         <div class="buttons">
-            <button class="refresh">Actualiser</button>
             <button class="add">Ajouter</button>
+            <div class="view">
+              <button id="columns">Mosaïque</button>
+              <button id="column">Colonne</button>
+            </div>
         </div>
         <div class="instagram">
-            <div class="img">
-                
-            </div>
+            <img src="img/galery/DSC_0009-1-2.jpg" alt="">
+            <img src="img/galery/DSC_0010-1-2.jpg" alt="">
+            <img src="img/galery/DSC_0014-1-2.jpg" alt="">
+            <img src="img/galery/DSC_0019-1.jpg" alt="">
+            <img src="img/galery/DSC_0033-1.jpg" alt="">
+            <img src="img/galery/DSC_0039-1.jpg" alt="">
+            <img src="img/galery/DSC_0045-1.jpg" alt="">
+            <img src="img/galery/DSC_0051-1.jpg" alt="">
+            <img src="img/galery/DSC_0059-1.jpg" alt="">
+            <img src="img/galery/DSC_0068-1.jpg" alt="">
+            <img src="img/galery/DSC_0082-1.jpg" alt="">
+            <img src="img/galery/DSC_0100-1-2.jpg" alt="">
+            <img src="img/galery/DSC_0100-1.jpg" alt="">
         </div>
     </main>
     <footer>
