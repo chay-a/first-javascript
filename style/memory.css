@@ -1,7 +1,4 @@
 #game {
-  /* display: grid;
-  gap: 50px 100px;
-  grid-template-columns: repeat(4, 20%); */
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -15,4 +12,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* animation-name: show;
+    animation-duration: 1s; */
+}
+
+@keyframes show{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
