@@ -18,6 +18,14 @@ function apiUrl(difficulty) {
 
 function setupGame(infos) {
     allImg = infos.frontImg.concat(infos.frontImg);
+    const infosDiv = document.querySelector('.infos');
+    const difficulty = document.createElement('p');
+    difficulty.textContent = 'Difficulté : '+infos.difficulty;
+    const pairs = document.createElement('p');
+    pairs.textContent = 'Nombre de paires : '+infos.pairs;
+    const tryNb = document.createElement('p');
+    tryNb.textContent = 'Nombre d\'essais restant : '+infos.try;
+    infosDiv.append(difficulty, pairs, tryNb);
     for (let i = 0; i < infos.pairs * 2; i++) {
         cardCreation(infos.backImg);
     }
