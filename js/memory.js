@@ -1,4 +1,5 @@
-function Game(difficulty) {
+let allImg;
+function displayGame(difficulty) {
     let api = apiUrl(difficulty);
     fetch(api)
         .then(response => response.json())
@@ -13,30 +14,32 @@ function apiUrl(difficulty) {
 }
 
 function setupGame(infos) {
-    const allImg = infos.FrontImg.concat(infos.frontImg);
+    allImg = infos.frontImg.concat(infos.frontImg);
     for (let i = 0; i < infos.pairs * 2; i++) {
-        cardCreation(infos.backImg, infos.frontImg);
+        cardCreation(infos.backImg);
     }
 }
 
 function cardCreation(backImg) {
     let card = document.createElement('div');
     card.classList.add('card');
-    sideCreation(card, 'back', backImg);
     randomFront(card);
+    sideCreation(card, 'back', backImg);
+    const game = document.getElementById('game');
+    game.append(card);
 }
 
 function sideCreation(parent, side, src) {
-    let sideDiv = document.createElement('div');
-    sideDiv.classList.add(side);
     let img = document.createElement('img');
-    img.setAttribute('src', src);
-    sideDiv.append(img);
-    parent.append(sideDiv);
+    img.classList.add(side);
+    img.setAttribute('src', 'img/memory/'+src);
+    parent.append(img);
 }
 
 function randomFront(parent) {
-    let index = getRndInteger(0, allImg.length + 1);
+    let index = getRndInteger(0, allImg.length -1);
+    console.log(allImg);
+    console.log(index);
     sideCreation(parent, 'front', allImg[index]);
     allImg.splice(index, 1);
 }
