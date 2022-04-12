@@ -9,14 +9,42 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/dropdownMenu.css" />
+    <script src="js/dropdownMenu.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
   </head>
-
   <body>
     <header>
-      <h1 class="text-center">Pierre, Feuille, Ciseau</h1>
+      <nav class="mobile-nav">
+        <div class="dropdown-menu-mobile">
+          <a href="games.html" id="gamesMobile"><img src="img/games.svg" class="icons" /></a>
+          <div class="dropdown-mobile close">
+            <a href="rpc.html" class="dropdown-item">Pierre, feuille ,ciseaux</a>
+            <a href="memory.html" class="dropdown-item">Memory game</a>
+          </div>
+        </div>
+        <a href="gallery.html"><img src="img/gallery.svg" class="icons" /></a>
+        <a href="index.html"
+          ><img src="img/profile.jpeg" class="profile-img nav-img"
+        /></a>
+      </nav>
+      <nav class="desktop-nav">
+        <div class="dropdown-menu">
+          <a href="games.html" id="games">Jeux</a>
+          <div class="dropdown close">
+            <a href="rpc.html" class="dropdown-item">Pierre, feuille ,ciseaux</a>
+            <a href="memory.html" class="dropdown-item">Memory game</a>
+          </div>
+        </div>
+        <a href="gallery.html">Gallerie</a>
+        <a href="index.html"
+          ><img src="img/profile.jpeg" class="profile-img nav-img"
+        /></a>
+      </nav>
     </header>
+    <h1 class="text-center">Pierre, Feuille, Ciseau</h1>
     <div class="container">
       <section
         class="row justify-content-evenly align-items-center"
@@ -43,7 +71,7 @@
       >
         <h2>Le jeu commence :</h2>
       </section>
-      <button id="restart">Recommencer</button>
+      <button id="restart" onClick="window.location.reload(true)">Recommencer</button>
     </div>
   </body>
 </html>

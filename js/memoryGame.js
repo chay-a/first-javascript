@@ -66,6 +66,6 @@ function isWin() {
 
 function displayResult(resultString) {
     const result = document.getElementById("result");
-    result.innerHTML = '<p>Résultat : ' + resultString + '</p>';
+    result.innerHTML = '<p>Résultat : ' + resultString + '</p>' + result.innerHTML;
     result.style.display = 'block';
 }
