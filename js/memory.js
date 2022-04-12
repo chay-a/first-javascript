@@ -21,11 +21,19 @@ function setupGame(infos) {
     const infosDiv = document.querySelector('.infos');
     const difficulty = document.createElement('p');
     difficulty.textContent = 'Difficulté : '+infos.difficulty;
-    const pairs = document.createElement('p');
-    pairs.textContent = 'Nombre de paires : '+infos.pairs;
+    const pairNb = document.createElement('p');
+    const pairs = document.createElement('span');
+    pairs.textContent = infos.pairs;
+    pairs.setAttribute('id', 'pairs');
+    pairNb.textContent = 'Nombre de paires : ';
+    pairNb.append(pairs);
     const tryNb = document.createElement('p');
-    tryNb.textContent = 'Nombre d\'essais restant : '+infos.try;
-    infosDiv.append(difficulty, pairs, tryNb);
+    const tries = document.createElement('span');
+    tries.textContent = infos.try;
+    tryNb.textContent = 'Nombre d\'essais restant : ';
+    tries.setAttribute('id', 'try');
+    tryNb.append(tries);
+    infosDiv.append(difficulty, pairNb, tryNb);
     for (let i = 0; i < infos.pairs * 2; i++) {
         cardCreation(infos.backImg);
     }
