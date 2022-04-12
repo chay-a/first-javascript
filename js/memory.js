@@ -1,6 +1,8 @@
 let allImg;
 function displayGame(difficulty) {
+    beforeGame();
     let api = apiUrl(difficulty);
+    console.log(api);
     fetch(api)
         .then(response => response.json())
         .then(response => {
@@ -10,13 +12,24 @@ function displayGame(difficulty) {
         .catch(error => console.error(error));
 }
 
+function beforeGame() {
+    const infos = document.querySelector('.infos');
+    const game = document.getElementById('game');
+    const choice = document.getElementById('difficulty-menu');
+    const link = document.getElementById('difficulty-selection');
+    infos.style.display = 'block';
+    game.style.display = 'flex';
+    choice.style.display ='none';
+    link.style.display = 'none';
+}
+
 function apiUrl(difficulty) {
     if (difficulty === "facile") {
         return apiUrl = "https://mocki.io/v1/278bb667-340f-46f4-90a5-4eea31e27241";
     } else if (difficulty === 'moyen') {
         return apiUrl = "https://mocki.io/v1/7d179667-7231-420a-bea6-b4162ab4477d";
     } else if(difficulty === 'difficile') {
-        return apiUrl = "https://mocki.io/v1/f8705cc0-80d6-4a20-a8f8-fe7320c90746 ";
+        return apiUrl = "https://mocki.io/v1/f8705cc0-80d6-4a20-a8f8-fe7320c90746";
     }
 }
 
