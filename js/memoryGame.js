@@ -56,11 +56,13 @@ function isWin() {
     if (nbTries == 0 && nbPairs !== pairFound) {
         setTimeout(function () {
             displayResult('défaite');
+            addDefeatLS();
         }, 1000);
     } else if (nbTries > 0 && nbPairs == pairFound) {
         setTimeout(function () {
             displayResult('victoire');
             startConfetti();
+            addVictoryLS(nbTries);
         }, 1000);
     }
 }
@@ -68,5 +70,54 @@ function isWin() {
 function displayResult(resultString) {
     const result = document.getElementById("result");
     result.innerHTML = '<p>Résultat : ' + resultString + '</p>' + result.innerHTML;
+    const stat = document.createElement('div');
+    stat.style.display = 'flex';
+    result.append(stat);
+    displayLS(stat);
     result.style.display = 'block';
+}
+
+function addDefeatLS(){
+    if (localStorage.getItem(difficulty+'Defeat')) {
+        localStorage[difficulty+'Defeat']++ ;
+    } else {
+        localStorage.setItem(difficulty+'Defeat', 1);
+    }
+}
+
+function addVictoryLS(nbTries){
+    if (localStorage.getItem(difficulty+'Victory')) {
+        localStorage[difficulty+'Victory']++;
+        checkBestPlay(nbTries);
+    } else {
+        localStorage.setItem(difficulty+'Victory', 1);
+    }
+}
+
+function checkBestPlay(nbTries) {
+    if (localStorage.getItem(difficulty+'Best')) {
+        if (nbTries > localStorage.getItem(difficulty+'Best')) {
+            localStoragelocalStorage[difficulty+'Best'] = nbTries;
+        }
+    } else {
+        localStorage.setItem(difficulty+'Best', nbTries);
+    }
+}
+
+function displayLS(parent) {
+    for (let i = 0; i < difficulties.length; i++) {
+        const difficultyDisplay = document.createElement('div');
+        const difficultyName = document.createElement('h2');
+        difficultyName.textContent = difficulties[i];
+        const nbGame = document.createElement('p');
+        const victory = document.createElement('p');
+        const defeat = document.createElement('p');
+        const best = document.createElement('p');
+        nbGame.textContent = 'Nombre de parties : '+localStorage.getItem(difficulties[i]+'GamesNb');
+        victory.textContent = 'Nombre de victoire : '+localStorage.getItem(difficulties[i]+'Victory');
+        defeat.textContent = 'Nombre de défaite : '+localStorage.getItem(difficulties[i]+'Defeat');
+        best.textContent = 'Meilleur score : '+localStorage.getItem(difficulties[i]+'Best');
+        difficultyDisplay.append(difficultyName, nbGame, victory, defeat, best);
+        parent.append(difficultyDisplay);
+    }
 }
