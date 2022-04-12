@@ -3,7 +3,10 @@ function displayGame(difficulty) {
     let api = apiUrl(difficulty);
     fetch(api)
         .then(response => response.json())
-        .then(response => setupGame(response))
+        .then(response => {
+            setupGame(response),
+            gameStart();
+        })
         .catch(error => console.error(error));
 }
 
@@ -32,14 +35,12 @@ function cardCreation(backImg) {
 function sideCreation(parent, side, src) {
     let img = document.createElement('img');
     img.classList.add(side);
-    img.setAttribute('src', 'img/memory/'+src);
+    img.setAttribute('src', 'img/memory/' + src);
     parent.append(img);
 }
 
 function randomFront(parent) {
-    let index = getRndInteger(0, allImg.length -1);
-    console.log(allImg);
-    console.log(index);
+    let index = getRndInteger(0, allImg.length - 1);
     sideCreation(parent, 'front', allImg[index]);
     allImg.splice(index, 1);
 }
