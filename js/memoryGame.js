@@ -60,6 +60,7 @@ function isWin() {
     } else if (nbTries > 0 && nbPairs == pairFound) {
         setTimeout(function () {
             displayResult('victoire');
+            startConfetti();
         }, 1000);
     }
 }

@@ -2,7 +2,6 @@ let allImg;
 function displayGame(difficulty) {
     beforeGame();
     let api = apiUrl(difficulty);
-    console.log(api);
     fetch(api)
         .then(response => response.json())
         .then(response => {
